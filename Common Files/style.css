@@ -42,7 +42,7 @@ header >* {
     height: 100%;  
 }
 #logo{
-    width: 12%;
+    width: 7%;
 }
 #logo > img{
     width: 80%;
@@ -696,12 +696,13 @@ footer section, footer hr{
     #logo{
       display: flex;
       align-items: center;
-      width: 20%;
+      width: 50%;
     }
     
     #logo > img{
         width: 100%;
         margin: unset;
+        
     }
   
     header #nav_bar{
