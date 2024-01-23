@@ -97,7 +97,11 @@
         <h1 id="productName"></h1>
         <b><p id="productBrand"></p></b>
         <b><p id="productPrice"></p></b>
+<<<<<<< HEAD
         <p id="productStrikedPrice"></p>
+=======
+        <del><p id="productStrikedPrice"></p></del>
+>>>>>>> 7cd3a95724dfc46648a84b0a101d5e97bee94c97
         <p id="productDescription"></p>
         <p id="productOffer"></p>
         <button class="wishListp" id="addToWishlist" onclick="productAdd()">Add to Wishlist</button>
@@ -107,6 +111,13 @@
          function goBack() {
             window.history.back();
         }
+<<<<<<< HEAD
+=======
+
+        var gst = 0.18;
+        var deliverycharge = 50;
+
+>>>>>>> 7cd3a95724dfc46648a84b0a101d5e97bee94c97
         var productData = [{
             id:1,
   image_url: "https://assets.myntassets.com/f_webp,dpr_1.5,q_60,w_210,c_limit,fl_progressive/assets/images/10331501/2020/3/18/d4d07c60-88d9-43d9-aa78-9cc7712816321584508934272-US-Polo-Assn-Men-White-Colourblocked-Sneakers-84015845089331-1.jpg",
@@ -558,9 +569,15 @@ document.addEventListener('DOMContentLoaded', function () {
             document.getElementById('productName').textContent = productDetails.para;
             document.getElementById('productBrand').textContent = productDetails.brand;
             document.getElementById('productDescription').textContent = productDetails.description;
+<<<<<<< HEAD
             document.getElementById('productPrice').textContent = `Price: ${productDetails.price}`;
             document.getElementById('productStrikedPrice').textContent = `Striked Price: ${productDetails.strikedoffprice}`;
             document.getElementById('productOffer').textContent = `Offer: ${productDetails.offer}`;
+=======
+            document.getElementById('productPrice').textContent = productDetails.price;
+            document.getElementById('productStrikedPrice').textContent = productDetails.strikedoffprice;
+            document.getElementById('productOffer').textContent = productDetails.offer;
+>>>>>>> 7cd3a95724dfc46648a84b0a101d5e97bee94c97
         });
         function productAdd(){
           console.log("Product Add",productDetails);
