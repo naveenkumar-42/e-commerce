@@ -97,7 +97,7 @@
         <h1 id="productName"></h1>
         <b><p id="productBrand"></p></b>
         <b><p id="productPrice"></p></b>
-        <p id="productStrikedPrice"></p>
+        <del><p id="productStrikedPrice"></p></del>
         <p id="productDescription"></p>
         <p id="productOffer"></p>
         <button class="wishListp" id="addToWishlist" onclick="productAdd()">Add to Wishlist</button>
@@ -561,9 +561,9 @@ document.addEventListener('DOMContentLoaded', function () {
             document.getElementById('productName').textContent = productDetails.para;
             document.getElementById('productBrand').textContent = productDetails.brand;
             document.getElementById('productDescription').textContent = productDetails.description;
-            document.getElementById('productPrice').textContent = `Price: ${productDetails.price}`;
-            document.getElementById('productStrikedPrice').textContent = `Striked Price: ${productDetails.strikedoffprice}`;
-            document.getElementById('productOffer').textContent = `Offer: ${productDetails.offer}`;
+            document.getElementById('productPrice').textContent = productDetails.price;
+            document.getElementById('productStrikedPrice').textContent = productDetails.strikedoffprice;
+            document.getElementById('productOffer').textContent = productDetails.offer;
         });
         function productAdd(){
           console.log("Product Add",productDetails);
