@@ -100,10 +100,9 @@
         <p id="productStrikedPrice"></p>
         <p id="productDescription"></p>
         <p id="productOffer"></p>
-        <button id="addToWishlist">Add to Wishlist</button>
-        <button id="addToBag">Add to Bag</button>
+        <button class="wishListp" id="addToWishlist" onclick="productAdd()">Add to Wishlist</button>
+        <button class="addToBagp" id="addToBag" onclick="productAddtoBag()">Add to Bag</button>
     </div>
-
     <script>
          function goBack() {
             window.history.back();
@@ -528,21 +527,33 @@
 
 }, ];
 
-    
-        document.addEventListener('DOMContentLoaded', function () {
+var wishListData = JSON.parse(localStorage.getItem("wishListObj")) || [];
+var bagData = JSON.parse(localStorage.getItem("BagListObj")) || [];
+let productDetails;
+function addToWishlist(element) {
+  console.log("Add to Wish List ",element);
+wishListData.push(element);
+localStorage.setItem("wishListObj", JSON.stringify(wishListData));
+}
+
+
+function addToBag(element) {
+  console.log("Add to BAG ",element);
+bagData.push(element);
+localStorage.setItem("BagListObj", JSON.stringify(bagData));
+}
+document.addEventListener('DOMContentLoaded', function () {
             // Fetch product details from the URL parameters
             const urlParams = new URLSearchParams(window.location.search);
             const productId = urlParams.get('id');
-            console.log("Product ID "+productId);
+            const product=0;
             // Function to fetch product details based on the product ID
             function fetchProductDetails(productId) {
                 const productDetails = productData.find(product => product.id === parseInt(productId));
-
                 return productDetails;
             }
-
-            // Update the product details on the page
-            const productDetails = fetchProductDetails(productId);
+            productDetails = fetchProductDetails(productId);
+            console.log(productDetails);
             document.getElementById('productImage').src = productDetails.image_url;
             document.getElementById('productName').textContent = productDetails.para;
             document.getElementById('productBrand').textContent = productDetails.brand;
@@ -550,26 +561,19 @@
             document.getElementById('productPrice').textContent = `Price: ${productDetails.price}`;
             document.getElementById('productStrikedPrice').textContent = `Striked Price: ${productDetails.strikedoffprice}`;
             document.getElementById('productOffer').textContent = `Offer: ${productDetails.offer}`;
-
-            // Add event listeners for wishlist and bag buttons
-            document.getElementById('addToWishlist').addEventListener('click', function () {
-                // Implement your logic to add to wishlist
-                function addToWishlist(element) {
-                    wishListData.push(element);
-                    localStorage.setItem("wishListObj", JSON.stringify(wishListData));
-                }
-                alert('Added to Wishlist');
-                // Redirect to the landing page or another page
-                window.location.href = "../Landingpage/index.html";
-            });
-
-            document.getElementById('addToBag').addEventListener('click', function () {
-                // Implement your logic to add to bag
-                alert('Added to Bag');
-                // Redirect to the landing page or another page
-                window.location.href = "../Landingpage/index.html";
-            });
         });
+        function productAdd(){
+          console.log("Product Add",productDetails);
+          addToWishlist(productDetails);
+        }
+        function productAddtoBag(){
+          console.log("Add to Bag");
+          addToBag(productDetails);
+        }
+        function goBack() {
+            window.history.back();
+        }
+      
     </script>
 </body>
 
