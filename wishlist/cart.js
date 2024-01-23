@@ -5,27 +5,34 @@ var cartarr = JSON.parse(localStorage.getItem("BagListObj"))||[];
 
         var itemcount =cartarr.length;
         localStorage.setItem("itemcount",itemcount)
-
+        
+        var delivery = 50;
+        localStorage.setItem("delivery",delivery)
 
         var MRP =  cartarr.reduce(function(sum,a,ind){
           return sum+ +(cartarr[ind].strikedoffprice.split(" ")[1])
         },0);
         localStorage.setItem("MRP",MRP)
-
-       
        
         var amount = cartarr.reduce(function(sum,a,ind){
           return sum+ +(cartarr[ind].price.split(" ")[1])
         },0);
         localStorage.setItem("amount",amount)
-
-        
-       
+    
         var discount = MRP - amount;
         localStorage.setItem("discount",discount)
-
-        document.querySelector(".amount_pay").innerText= amount;
+        
+        if (itemcount != 0) {
+          total = amount+delivery;
+        } else {
+          total = 0;
+          delivery = 0;
+          localStorage.setItem("delivery",delivery)
+        }
+        
+        document.querySelector(".amount_pay").innerText= total;
         document.querySelector(".filldiscount").innerText= "- "+discount;
+        document.querySelector(".filldelivery").innerText= delivery;
         document.querySelector(".totalprice").innerText= MRP;
         document.querySelector(".pricedets").innerText= `PRICE DETAILS ( ${itemcount} Items)`;
 
@@ -110,7 +117,7 @@ var cartarr = JSON.parse(localStorage.getItem("BagListObj"))||[];
         document.querySelector(".makeorder").addEventListener("click",profile)
 
         function profile(){
-          window.location.href="../Profile/signup.html";
+          window.location.href="../payment/payment.html";
         }
 
         document.querySelector(".apply").addEventListener("click",discountfun);
@@ -136,7 +143,7 @@ var cartarr = JSON.parse(localStorage.getItem("BagListObj"))||[];
         }
 
 document.getElementById('landingPage').addEventListener('click', function(){
-  window.location.href = "../Landingpage/index.html";
+  window.location.href = "../index.html";
 
 }) 
 

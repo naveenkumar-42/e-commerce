@@ -84,12 +84,12 @@
             <div class="discount">
               <span>Discount on MRP</span><span class="filldiscount">--</span> 
            </div>
-      
+           <div class="delivery">
+            <span>Delivery Charges</span><span class="filldelivery">--</span>
+            </div>
            <div class="amount">
               <span>Total Amount</span><span class="amount_pay">--</span> 
            </div>
-           
-      
     
           </div>
     
@@ -104,16 +104,19 @@
 <script>
 
     var amount = localStorage.getItem("amount");
- 
-        document.querySelector(".amount_pay").innerText= amount;
+    var total = parseInt(amount) + (amount*0.18);
+        document.querySelector(".amount_pay").innerText= total.toFixed(2);
 
+        
        var MRP= localStorage.getItem("MRP");
        document.querySelector(".totalprice").innerText= MRP;
 
       var discount= localStorage.getItem("discount")
         document.querySelector(".filldiscount").innerText= "- "+discount;
 
-
+        var delivery= localStorage.getItem("delivery")
+        document.querySelector(".filldelivery").innerText= delivery;
+        
         var itemcount= localStorage.getItem("itemcount")
         document.querySelector(".pricedets").innerText= `PRICE DETAILS ( ${itemcount} Items)`;
 
