@@ -90,7 +90,6 @@
            <div class="amount">
               <span>Total Amount</span><span class="amount_pay">--</span> 
            </div>
-    
           </div>
     
     
@@ -104,7 +103,7 @@
 <script>
 
     var amount = localStorage.getItem("amount");
-    var total = parseInt(amount) + (amount*0.18);
+    var total = parseInt(amount) + (amount*0.18) + (50) ;
         document.querySelector(".amount_pay").innerText= total.toFixed(2);
 
         
